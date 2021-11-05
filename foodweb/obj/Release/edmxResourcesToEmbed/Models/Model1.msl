@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="foodreceipeModelStoreContainer" CdmEntityContainer="foodreceipeEntities">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="foodreceipeModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="catid" ColumnName="catid" />
+          <ScalarProperty Name="catname" ColumnName="catname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menus">
+      <EntityTypeMapping TypeName="foodreceipeModel.menu">
+        <MappingFragment StoreEntitySet="menu">
+          <ScalarProperty Name="menuid" ColumnName="menuid" />
+          <ScalarProperty Name="dishname" ColumnName="dishname" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sp_dish">
+      <EntityTypeMapping TypeName="foodreceipeModel.sp_dish">
+        <MappingFragment StoreEntitySet="sp_dish">
+          <ScalarProperty Name="dishid" ColumnName="dishid" />
+          <ScalarProperty Name="dishname" ColumnName="dishname" />
+          <ScalarProperty Name="catid" ColumnName="catid" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teams">
+      <EntityTypeMapping TypeName="foodreceipeModel.team">
+        <MappingFragment StoreEntitySet="team">
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="t_name" ColumnName="t_name" />
+          <ScalarProperty Name="t_role" ColumnName="t_role" />
+          <ScalarProperty Name="t_img" ColumnName="t_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservations">
+      <EntityTypeMapping TypeName="foodreceipeModel.reservation">
+        <MappingFragment StoreEntitySet="reservation">
+          <ScalarProperty Name="person_name" ColumnName="person_name" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="person" ColumnName="person" />
+          <ScalarProperty Name="r_time" ColumnName="r_time" />
+          <ScalarProperty Name="r_date" ColumnName="r_date" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="rid" ColumnName="rid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

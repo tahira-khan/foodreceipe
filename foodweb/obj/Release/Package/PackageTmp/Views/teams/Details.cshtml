@@ -1,0 +1,43 @@
+﻿@model foodweb.Models.team
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.t_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.t_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.t_role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.t_role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.t_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.t_img)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

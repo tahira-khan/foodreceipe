@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="foodreceipeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="catname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="menuid" />
+          </Key>
+          <Property Name="menuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dishname" Type="varchar" MaxLength="100" />
+          <Property Name="details" Type="varchar(max)" />
+          <Property Name="price" Type="int" />
+          <Property Name="img" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="250" />
+          <Property Name="phone" Type="bigint" />
+          <Property Name="r_date" Type="date" />
+          <Property Name="r_time" Type="varchar" MaxLength="50" />
+          <Property Name="person" Type="int" />
+          <Property Name="msg" Type="varchar(max)" />
+          <Property Name="person_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sp_dish">
+          <Key>
+            <PropertyRef Name="dishid" />
+          </Key>
+          <Property Name="dishid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dishname" Type="varchar" MaxLength="100" />
+          <Property Name="catid" Type="int" />
+          <Property Name="details" Type="varchar(max)" />
+          <Property Name="price" Type="int" />
+          <Property Name="img" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="tid" />
+          </Key>
+          <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_name" Type="varchar" MaxLength="50" />
+          <Property Name="t_role" Type="varchar" MaxLength="50" />
+          <Property Name="t_img" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <Association Name="FK__sp_dish__catid__35BCFE0A">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="sp_dish" Type="Self.sp_dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="catid" />
+            </Principal>
+            <Dependent Role="sp_dish">
+              <PropertyRef Name="catid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="foodreceipeModelStoreContainer">
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sp_dish" EntityType="Self.sp_dish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="team" EntityType="Self.team" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__sp_dish__catid__35BCFE0A" Association="Self.FK__sp_dish__catid__35BCFE0A">
+            <End Role="category" EntitySet="category" />
+            <End Role="sp_dish" EntitySet="sp_dish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="foodreceipeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="catname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sp_dish" Relationship="Self.FK__sp_dish__catid__35BCFE0A" FromRole="category" ToRole="sp_dish" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="menuid" />
+          </Key>
+          <Property Name="menuid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dishname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="img" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sp_dish">
+          <Key>
+            <PropertyRef Name="dishid" />
+          </Key>
+          <Property Name="dishid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dishname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="catid" Type="Int32" />
+          <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="img" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="category" Relationship="Self.FK__sp_dish__catid__35BCFE0A" FromRole="sp_dish" ToRole="category" />
+        </EntityType>
+        <EntityType Name="team">
+          <Key>
+            <PropertyRef Name="tid" />
+          </Key>
+          <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="t_role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="t_img" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__sp_dish__catid__35BCFE0A">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="sp_dish" Type="Self.sp_dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="catid" />
+            </Principal>
+            <Dependent Role="sp_dish">
+              <PropertyRef Name="catid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="foodreceipeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="menus" EntityType="Self.menu" />
+          <EntitySet Name="sp_dish" EntityType="Self.sp_dish" />
+          <EntitySet Name="teams" EntityType="Self.team" />
+          <AssociationSet Name="FK__sp_dish__catid__35BCFE0A" Association="Self.FK__sp_dish__catid__35BCFE0A">
+            <End Role="category" EntitySet="categories" />
+            <End Role="sp_dish" EntitySet="sp_dish" />
+          </AssociationSet>
+          <EntitySet Name="reservations" EntityType="foodreceipeModel.reservation" />
+        </EntityContainer>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int64" />
+          <Property Name="r_date" Type="DateTime" Precision="0" />
+          <Property Name="r_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="person" Type="Int32" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="person_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="foodreceipeModelStoreContainer" CdmEntityContainer="foodreceipeEntities">
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="foodreceipeModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="catname" ColumnName="catname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menus">
+            <EntityTypeMapping TypeName="foodreceipeModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="menuid" ColumnName="menuid" />
+                <ScalarProperty Name="dishname" ColumnName="dishname" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sp_dish">
+            <EntityTypeMapping TypeName="foodreceipeModel.sp_dish">
+              <MappingFragment StoreEntitySet="sp_dish">
+                <ScalarProperty Name="dishid" ColumnName="dishid" />
+                <ScalarProperty Name="dishname" ColumnName="dishname" />
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teams">
+            <EntityTypeMapping TypeName="foodreceipeModel.team">
+              <MappingFragment StoreEntitySet="team">
+                <ScalarProperty Name="tid" ColumnName="tid" />
+                <ScalarProperty Name="t_name" ColumnName="t_name" />
+                <ScalarProperty Name="t_role" ColumnName="t_role" />
+                <ScalarProperty Name="t_img" ColumnName="t_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservations">
+            <EntityTypeMapping TypeName="foodreceipeModel.reservation">
+              <MappingFragment StoreEntitySet="reservation">
+                <ScalarProperty Name="person_name" ColumnName="person_name" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="r_time" ColumnName="r_time" />
+                <ScalarProperty Name="r_date" ColumnName="r_date" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="rid" ColumnName="rid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

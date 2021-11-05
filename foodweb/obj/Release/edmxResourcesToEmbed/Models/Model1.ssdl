@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="foodreceipeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="catid" />
+    </Key>
+    <Property Name="catid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="catname" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="menuid" />
+    </Key>
+    <Property Name="menuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dishname" Type="varchar" MaxLength="100" />
+    <Property Name="details" Type="varchar(max)" />
+    <Property Name="price" Type="int" />
+    <Property Name="img" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="reservation">
+    <Key>
+      <PropertyRef Name="rid" />
+    </Key>
+    <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="250" />
+    <Property Name="phone" Type="bigint" />
+    <Property Name="r_date" Type="date" />
+    <Property Name="r_time" Type="varchar" MaxLength="50" />
+    <Property Name="person" Type="int" />
+    <Property Name="msg" Type="varchar(max)" />
+    <Property Name="person_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sp_dish">
+    <Key>
+      <PropertyRef Name="dishid" />
+    </Key>
+    <Property Name="dishid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dishname" Type="varchar" MaxLength="100" />
+    <Property Name="catid" Type="int" />
+    <Property Name="details" Type="varchar(max)" />
+    <Property Name="price" Type="int" />
+    <Property Name="img" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="team">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="t_name" Type="varchar" MaxLength="50" />
+    <Property Name="t_role" Type="varchar" MaxLength="50" />
+    <Property Name="t_img" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <Association Name="FK__sp_dish__catid__35BCFE0A">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="sp_dish" Type="Self.sp_dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="catid" />
+      </Principal>
+      <Dependent Role="sp_dish">
+        <PropertyRef Name="catid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="foodreceipeModelStoreContainer">
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sp_dish" EntityType="Self.sp_dish" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="team" EntityType="Self.team" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__sp_dish__catid__35BCFE0A" Association="Self.FK__sp_dish__catid__35BCFE0A">
+      <End Role="category" EntitySet="category" />
+      <End Role="sp_dish" EntitySet="sp_dish" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
