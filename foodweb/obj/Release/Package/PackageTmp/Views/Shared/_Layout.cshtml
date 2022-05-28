@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fod Receipe</title>
+    <title>Food Yumms</title>
 
 
     <!-- External CSS -->
@@ -62,7 +62,8 @@
                 <nav id="navbar-header" class="navbar navbar-expand-lg">
                     <div class="container">
                         <a class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile" href="/">
-                            <img src="~/img/logo.png" alt="">
+                            @*<img src="~/img/logo.png" alt="">*@
+                            <h2 style="color:pink">Yummy</h2>
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="lnr lnr-menu"></span>
@@ -81,23 +82,28 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="@Url.Action("about","Main")">About</a>
+                                    </li> 
+                                
+                                <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("specialdish","Main")">Special Dish</a>
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @*<li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="@Url.Action("speacialdish","main")" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Special Dishes
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="special-dishes.html">Beef Steak Sauce</a>
                                             <a class="dropdown-item" href="special-dishes.html">Salmon Zucchini</a>
                                         </div>
-                                    </li>
+                                    </li>*@
                                 </div>
                             </ul>
 
-                            <a class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop" href="#">
-                                <img src="~/img/logo.png" alt="">
-                            </a>
+                        <a class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop" href="#">
+                            @*<img src="~/img/logo.png" alt="">*@
+                            <h2 style="color:pink">Yummy</h2>
+                        </a>
                             <ul class="navbar-nav d-flex justify-content-between">
                                 <div class="d-flex flex-lg-row flex-column">
                                     <li class="nav-item active">
@@ -129,16 +135,17 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="footer-widget pr-lg-5 pr-0">
-                                    <img src="img/logo.png" class="img-fluid footer-logo mb-3" alt="">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et obcaecati quisquam id sit omnis explicabo voluptate aut placeat, soluta, nisi ea magni facere, itaque incidunt modi? Magni, et voluptatum dolorem.</p>
+                                    @*<img src="~/img/logo.png" class="img-fluid footer-logo mb-3" alt="">*@
+                                    <h2 style="color:pink">Yummy</h2>
+                                    <p>Great recipes. It’s a food blog, so naturally you’re going to find recipes here. But I only share the recipes I really, truly love. You won’t find anything here that I’ve never made before or would never make again. Every recipe I post has my stamp of approval—if I wouldn’t eat it or serve it, you won’t find it here..</p>
                                     <nav class="nav nav-mastfoot justify-content-start">
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="https://www.facebook.com/">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="https://twitter.com/?lang=en">
                                             <i class="fab fa-twitter"></i>
                                         </a>
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="https://www.instagram.com/">
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     </nav>
@@ -163,19 +170,20 @@
 
                             <div class="col-lg-4">
                                 <div class="footer-widget pl-lg-5 pl-0">
-                                    <h4>Newsletter</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <h4>Contact us</h4>
+                                    <p>Join for more info</p>
                                     <form id="newsletter">
-                                        <div class="form-group">
+                                        @*<div class="form-group">
                                             <input type="email" class="form-control" id="emailNewsletter" aria-describedby="emailNewsletter" placeholder="Enter email">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                        </div>*@
+                                    <a href="mailto:aptech@gmail.com" class="btn btn-primary w-100">Email us</a>
+                                        @*<button type="submit" class="btn btn-primary w-100">Submit</button>*@
                                     </form>
                                 </div>
 
                             </div>
                             <div class="col-md-12 d-flex align-items-center">
-                                <p class="mx-auto text-center mb-0">Copyright 2019. All Right Reserved. Design by <a href="https://gettemplates.co" target="_blank">GetTemplates</a></p>
+                                <p class="mx-auto text-center mb-0">Copyright 2021. All Right Reserved</p>
                             </div>
 
                         </div>
